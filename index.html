@@ -3,29 +3,29 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Ruslan Hryshchenko — Frontend Developer</title>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+  <title>Ruslan Hryshchenko — Full Stack Developer</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=DM+Sans:wght@300;400;500&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
   <style>
     :root {
-      --crimson: #8B1A2B;
-      --crimson-dark: #5c1019;
-      --crimson-light: #c0394e;
-      --olive: #4a4e35;
-      --olive-light: #737a55;
-      --sky: #b8c9d4;
-      --sky-dark: #7a9aaa;
-      --cloud: #dde6eb;
-      --cream: #f5f0eb;
-      --dark: #1a1a1a;
-      --mid: #444;
-      --soft: #888;
+      --ink: #101526;
+      --ink-2: #161d33;
+      --teal: #3a7d7a;
+      --teal-light: #5fa6a2;
+      --teal-soft: #c7ded9;
+      --gold: #b4832e;
+      --gold-light: #d6a850;
+      --paper: #f7f6f2;
+      --dark: #1a1d27;
+      --mid: #4a4f5e;
+      --soft: #868b98;
+      --line: #e1ded4;
     }
 
     * { margin: 0; padding: 0; box-sizing: border-box; }
 
     body {
       font-family: 'DM Sans', sans-serif;
-      background: linear-gradient(135deg, #b8c9d4 0%, #7a9aaa 40%, #4a4e35 100%);
+      background: linear-gradient(135deg, #1c2338 0%, #101526 55%, #0b0e19 100%);
       min-height: 100vh;
       display: flex;
       justify-content: center;
@@ -39,7 +39,7 @@
       max-width: 100%;
       border-radius: 20px;
       overflow: hidden;
-      box-shadow: 0 30px 80px rgba(0,0,0,0.35);
+      box-shadow: 0 30px 80px rgba(0,0,0,0.45);
       animation: fadeUp 0.7s ease both;
     }
 
@@ -50,7 +50,8 @@
 
     /* ── SIDEBAR ── */
     .sidebar {
-      background: var(--crimson-dark);
+      background: var(--ink);
+      background-image: linear-gradient(180deg, var(--ink) 0%, var(--ink-2) 100%);
       width: 290px;
       flex-shrink: 0;
       display: flex;
@@ -67,7 +68,7 @@
       top: -60px; right: -60px;
       width: 180px; height: 180px;
       border-radius: 50%;
-      background: rgba(255,255,255,0.05);
+      background: rgba(255,255,255,0.04);
     }
     .sidebar::after {
       content: '';
@@ -75,8 +76,19 @@
       bottom: -40px; left: -40px;
       width: 140px; height: 140px;
       border-radius: 50%;
-      background: rgba(255,255,255,0.04);
+      background: rgba(255,255,255,0.03);
     }
+
+    .prompt-tag {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.7rem;
+      color: var(--teal-soft);
+      opacity: 0.8;
+      letter-spacing: 0.04em;
+      margin-bottom: 18px;
+      align-self: flex-start;
+    }
+    .prompt-tag span { color: var(--gold-light); }
 
     .avatar-wrap {
       position: relative;
@@ -88,7 +100,7 @@
       position: absolute;
       inset: -4px;
       border-radius: 50%;
-      background: conic-gradient(var(--crimson-light), var(--olive-light), var(--sky-dark), var(--crimson-light));
+      background: conic-gradient(var(--teal-light), var(--gold-light), var(--teal-soft), var(--teal-light));
       animation: spin 6s linear infinite;
     }
 
@@ -99,7 +111,7 @@
       position: absolute;
       inset: -2px;
       border-radius: 50%;
-      background: var(--crimson-dark);
+      background: var(--ink);
     }
 
     .avatar {
@@ -123,10 +135,11 @@
     }
 
     .sidebar-role {
-      font-size: 0.78rem;
-      color: var(--sky);
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.72rem;
+      color: var(--teal-soft);
       text-align: center;
-      letter-spacing: 0.12em;
+      letter-spacing: 0.1em;
       text-transform: uppercase;
       margin-bottom: 28px;
     }
@@ -134,7 +147,7 @@
     .sidebar-divider {
       width: 40px;
       height: 2px;
-      background: var(--crimson-light);
+      background: var(--gold);
       border-radius: 2px;
       margin-bottom: 28px;
     }
@@ -145,10 +158,11 @@
     }
 
     .sidebar-section-title {
-      font-size: 0.65rem;
-      letter-spacing: 0.2em;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.62rem;
+      letter-spacing: 0.18em;
       text-transform: uppercase;
-      color: var(--sky-dark);
+      color: #7d84a0;
       margin-bottom: 10px;
     }
 
@@ -158,7 +172,7 @@
       gap: 8px;
       margin-bottom: 8px;
       font-size: 0.82rem;
-      color: var(--cloud);
+      color: #cdd3e6;
     }
 
     .info-icon {
@@ -166,6 +180,7 @@
       width: 18px;
       text-align: center;
       flex-shrink: 0;
+      color: var(--teal-soft);
     }
 
     .social-links {
@@ -179,17 +194,19 @@
       display: flex;
       align-items: center;
       gap: 10px;
-      color: var(--cloud);
+      color: #cdd3e6;
       text-decoration: none;
-      font-size: 0.82rem;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.78rem;
       padding: 8px 12px;
       border-radius: 8px;
-      background: rgba(255,255,255,0.06);
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.08);
       transition: background 0.2s, color 0.2s;
     }
 
     .social-link:hover {
-      background: rgba(255,255,255,0.14);
+      background: rgba(255,255,255,0.1);
       color: #fff;
     }
 
@@ -199,35 +216,36 @@
       width: 100%;
       text-align: center;
       padding: 12px;
-      background: var(--crimson-light);
+      background: var(--teal);
       color: #fff;
       font-family: 'DM Sans', sans-serif;
       font-weight: 500;
       font-size: 0.85rem;
-      letter-spacing: 0.08em;
+      letter-spacing: 0.06em;
       text-decoration: none;
       border-radius: 10px;
       transition: background 0.2s, transform 0.15s;
     }
 
     .btn-cv:hover {
-      background: #d94060;
+      background: var(--teal-light);
       transform: translateY(-1px);
     }
 
     /* ── MAIN CONTENT ── */
     .content {
       flex: 1;
-      background: var(--cream);
+      background: var(--paper);
       padding: 44px 42px;
       overflow-y: auto;
     }
 
     .greeting {
-      font-size: 0.78rem;
-      letter-spacing: 0.2em;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.74rem;
+      letter-spacing: 0.16em;
       text-transform: uppercase;
-      color: var(--crimson-light);
+      color: var(--teal);
       margin-bottom: 6px;
       font-weight: 500;
     }
@@ -241,10 +259,11 @@
     }
 
     .hero-sub {
-      font-size: 0.88rem;
-      color: var(--olive-light);
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.82rem;
+      color: var(--gold);
       font-weight: 500;
-      letter-spacing: 0.05em;
+      letter-spacing: 0.02em;
       margin-bottom: 20px;
     }
 
@@ -253,7 +272,7 @@
       color: var(--mid);
       line-height: 1.75;
       margin-bottom: 30px;
-      border-left: 3px solid var(--crimson-light);
+      border-left: 3px solid var(--teal);
       padding-left: 16px;
     }
 
@@ -271,7 +290,7 @@
       content: '';
       flex: 1;
       height: 1px;
-      background: #ddd;
+      background: var(--line);
     }
 
     /* Tags */
@@ -284,18 +303,19 @@
 
     .tag {
       padding: 5px 13px;
-      font-size: 0.78rem;
+      font-size: 0.76rem;
       font-weight: 500;
       border-radius: 20px;
-      letter-spacing: 0.04em;
+      letter-spacing: 0.02em;
       transition: transform 0.15s;
+      font-family: 'JetBrains Mono', monospace;
     }
 
     .tag:hover { transform: translateY(-2px); }
 
-    .tag-red    { background: #fce9ec; color: var(--crimson); border: 1px solid #f5c0ca; }
-    .tag-olive  { background: #eef0e6; color: var(--olive);   border: 1px solid #c8cdb0; }
-    .tag-sky    { background: #e5ecf0; color: #3a6070;        border: 1px solid #b0c8d4; }
+    .tag-teal  { background: #e6f0ef; color: var(--teal);      border: 1px solid #b9d6d3; }
+    .tag-gold  { background: #f7ecd9; color: #8a621f;          border: 1px solid #e4c384; }
+    .tag-mute  { background: #eceef4; color: #545b74;          border: 1px solid #ccd1e2; }
 
     /* Projects */
     .projects {
@@ -312,19 +332,19 @@
       display: flex;
       align-items: center;
       gap: 14px;
-      box-shadow: 0 2px 10px rgba(0,0,0,0.06);
+      box-shadow: 0 2px 10px rgba(16,21,38,0.06);
       border-left: 4px solid transparent;
       transition: border-color 0.2s, transform 0.2s, box-shadow 0.2s;
     }
 
     .project-card:hover {
       transform: translateX(4px);
-      box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+      box-shadow: 0 4px 20px rgba(16,21,38,0.1);
     }
 
-    .project-card.red   { border-left-color: var(--crimson-light); }
-    .project-card.olive { border-left-color: var(--olive-light); }
-    .project-card.sky   { border-left-color: var(--sky-dark); }
+    .project-card.c-teal { border-left-color: var(--teal); }
+    .project-card.c-gold { border-left-color: var(--gold); }
+    .project-card.c-ink  { border-left-color: var(--ink-2); }
 
     .project-icon { font-size: 1.5rem; flex-shrink: 0; }
 
@@ -341,33 +361,35 @@
     }
 
     .project-tag {
-      font-size: 0.7rem;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.68rem;
       padding: 3px 10px;
       border-radius: 20px;
       background: #f0f0f0;
       color: var(--mid);
+      white-space: nowrap;
     }
 
     /* Contact button */
     .contact-btn {
       display: inline-block;
       padding: 11px 28px;
-      background: var(--olive);
+      background: var(--ink);
       color: #fff;
       border-radius: 10px;
       text-decoration: none;
       font-size: 0.85rem;
       font-weight: 500;
-      letter-spacing: 0.06em;
+      letter-spacing: 0.05em;
       transition: background 0.2s, transform 0.15s;
     }
 
     .contact-btn:hover {
-      background: var(--olive-light);
+      background: var(--ink-2);
       transform: translateY(-1px);
     }
 
-    /* Right-side icons strip (like example) */
+    /* Right-side icons strip */
     .nav-strip {
       position: fixed;
       right: 20px;
@@ -383,19 +405,21 @@
       width: 36px;
       height: 36px;
       border-radius: 50%;
-      background: rgba(255,255,255,0.85);
+      background: rgba(247,246,242,0.9);
       display: flex;
       align-items: center;
       justify-content: center;
       font-size: 0.9rem;
-      box-shadow: 0 2px 10px rgba(0,0,0,0.15);
+      box-shadow: 0 2px 10px rgba(0,0,0,0.25);
       cursor: pointer;
-      transition: background 0.2s, transform 0.2s;
+      transition: background 0.2s, transform 0.2s, color 0.2s;
       text-decoration: none;
+      color: var(--ink);
     }
 
     .nav-dot:hover {
-      background: var(--crimson-light);
+      background: var(--teal);
+      color: #fff;
       transform: scale(1.1);
     }
 
@@ -409,11 +433,11 @@
 </head>
 <body>
 
-  <!-- Side navigation dots (like the example template) -->
+  <!-- Side navigation dots -->
   <div class="nav-strip">
     <a class="nav-dot" href="https://github.com/r671h" target="_blank" title="GitHub">⌥</a>
     <a class="nav-dot" href="https://www.linkedin.com/in/ruslan-hryshchenko/" target="_blank" title="LinkedIn">in</a>
-    <a class="nav-dot" href="#" title="Email">✉</a>
+    <a class="nav-dot" href="mailto:hryshchenkoruslan1@gmail.com" title="Email">✉</a>
     <a class="nav-dot" href="#" title="Location">📍</a>
   </div>
 
@@ -421,18 +445,19 @@
 
     <!-- SIDEBAR -->
     <div class="sidebar">
+      <div class="prompt-tag"><span>$</span> whoami</div>
       <div class="avatar-wrap">
-        <img class="avatar" src="./photo_2026-04-28_19-55-22.jpg" alt="Ruslan Hryshchenko">
+        <img class="avatar" src="./photo_2026-08-16_19-46-52.jpg" alt="Ruslan Hryshchenko">
       </div>
       <div class="sidebar-name">Ruslan Hryshchenko</div>
-      <div class="sidebar-role">Frontend Developer</div>
+      <div class="sidebar-role">Full Stack Developer</div>
       <div class="sidebar-divider"></div>
 
       <div class="sidebar-section">
         <div class="sidebar-section-title">Contact</div>
-        <div class="info-row"><span class="info-icon">📍</span> Germany (open to work)</div>
-        <div class="info-row"><span class="info-icon">🎓</span> Zaporizhzhia Polytechnic</div>
-        <div class="info-row"><span class="info-icon">🔧</span> Open to Remote / Hybrid</div>
+        <div class="info-row"><span class="info-icon">⌂</span> Geseke, Germany</div>
+        <div class="info-row"><span class="info-icon">🎓</span> Zaporizhzhia National University</div>
+        <div class="info-row"><span class="info-icon">⇄</span> Open to Remote / Hybrid</div>
       </div>
 
       <div class="sidebar-section">
@@ -440,71 +465,91 @@
         <div class="social-links">
           <a class="social-link" href="https://github.com/r671h" target="_blank">⌥ github.com/r671h</a>
           <a class="social-link" href="https://www.linkedin.com/in/ruslan-hryshchenko/" target="_blank">in linkedin.com/in/ruslan-h</a>
+          <a class="social-link" href="mailto:hryshchenkoruslan1@gmail.com">✉ hryshchenkoruslan1@gmail.com</a>
         </div>
       </div>
 
-      <a class="btn-cv" href="./Resume.pdf" target="_blank">↓ Download CV</a>
+      <a class="btn-cv" href="./RuslanHryshchenkoCV.pdf" target="_blank">↓ Download CV</a>
     </div>
 
     <!-- MAIN CONTENT -->
     <div class="content">
-      <div class="greeting">Hello there 👋</div>
+      <div class="greeting">// Hello there</div>
       <h1 class="hero-name">Ruslan<br>Hryshchenko</h1>
-      <div class="hero-sub">Frontend Developer · React · TypeScript · Next.js · AI Integration</div>
+      <div class="hero-sub">Full Stack Developer · React · Next.js · Node.js · AI Integration</div>
 
       <p class="bio">
-        I build modern, scalable web applications and integrate AI solutions into real-world products.
-        Passionate about clean architecture, great user experiences, and pushing the web forward.
-        Based in Germany — open to on-site, remote, and hybrid opportunities.
+        I engineer production-grade web applications across the entire stack — typed REST APIs,
+        relational and document databases, real-time features with WebSockets, and AI-driven
+        functionality built on the Claude and Gemini APIs. Based in Germany, shipping fast and
+        open to remote, hybrid, or on-site roles.
       </p>
 
       <div class="section-title">Tech Stack</div>
       <div class="tags">
-        <span class="tag tag-red">React</span>
-        <span class="tag tag-red">TypeScript</span>
-        <span class="tag tag-olive">Next.js</span>
-        <span class="tag tag-olive">Node.js</span>
-        <span class="tag tag-olive">Tailwind CSS</span>
-        <span class="tag tag-sky">AI Integration</span>
-        <span class="tag tag-sky">REST APIs</span>
-        <span class="tag tag-sky">Git</span>
+        <span class="tag tag-teal">React</span>
+        <span class="tag tag-teal">Next.js</span>
+        <span class="tag tag-teal">TypeScript</span>
+        <span class="tag tag-teal">Tailwind CSS</span>
+        <span class="tag tag-mute">Node.js</span>
+        <span class="tag tag-mute">Express.js</span>
+        <span class="tag tag-mute">Socket.io</span>
+        <span class="tag tag-mute">REST APIs</span>
+        <span class="tag tag-mute">MongoDB</span>
+        <span class="tag tag-mute">PostgreSQL</span>
+        <span class="tag tag-mute">Prisma</span>
+        <span class="tag tag-gold">Claude API</span>
+        <span class="tag tag-gold">Gemini API</span>
+        <span class="tag tag-gold">JWT</span>
+        <span class="tag tag-mute">Docker</span>
+        <span class="tag tag-mute">Git</span>
       </div>
 
       <div class="section-title">Projects</div>
       <div class="projects">
         <a href="https://weather-ai-forecast-assistent.vercel.app/" target="_blank">
-          <div class="project-card red">
+          <div class="project-card c-teal">
             <div class="project-icon">🌦</div>
             <div class="project-info">
-              <div class="project-name">AI Weather Advisor</div>
-              <div class="project-desc">Smart weather forecasting with AI-powered recommendations</div>
+              <div class="project-name">AI Weather Forecast Assistant</div>
+              <div class="project-desc">Live weather data turned into plain-language, AI-generated recommendations</div>
             </div>
-            <span class="project-tag">React · AI</span>
-          </div>
-        </a>
-        <a href="https://my-shop-tau-five.vercel.app/" target="_blank">
-          <div class="project-card olive">
-            <div class="project-icon">🛒</div>
-            <div class="project-info">
-              <div class="project-name">E-commerce Platform</div>
-              <div class="project-desc">Full-featured shop with cart, checkout, and admin dashboard</div>
-            </div>
-            <span class="project-tag">Next.js</span>
+            <span class="project-tag">Next.js · Claude · Gemini</span>
           </div>
         </a>
         <a href="https://fin-tracker-hqzb.vercel.app/dashboard" target="_blank">
-          <div class="project-card sky">
-            <div class="project-icon">🤖</div>
+          <div class="project-card c-gold">
+            <div class="project-icon">💰</div>
             <div class="project-info">
-              <div class="project-name">AI Finance Tracker</div>
-              <div class="project-desc">Embedded AI assistant into a finance analyst workflow</div>
+              <div class="project-name">FinTrack — Personal Finance Tracker</div>
+              <div class="project-desc">Multi-account tracker with CSV import and an AI finance analyst chat</div>
             </div>
-            <span class="project-tag">TypeScript · AI</span>
+            <span class="project-tag">Next.js · Express · Claude</span>
+          </div>
+        </a>
+        <a href="https://github.com/r671h/MyMessanger" target="_blank">
+          <div class="project-card c-ink">
+            <div class="project-icon">💬</div>
+            <div class="project-info">
+              <div class="project-name">MyMessenger — Real-time Chat App</div>
+              <div class="project-desc">1:1 and group messaging with live presence over Socket.io + PostgreSQL</div>
+            </div>
+            <span class="project-tag">Socket.io · Prisma</span>
+          </div>
+        </a>
+        <a href="https://my-shop-tau-five.vercel.app/" target="_blank">
+          <div class="project-card c-teal">
+            <div class="project-icon">🛒</div>
+            <div class="project-info">
+              <div class="project-name">E-Commerce Storefront</div>
+              <div class="project-desc">Online store with product catalog, JWT auth, and a shopping cart</div>
+            </div>
+            <span class="project-tag">Next.js · MongoDB</span>
           </div>
         </a>
       </div>
 
-      <a class="contact-btn" href="https://www.linkedin.com/in/ruslan-hryshchenko/" target="_blank">Contact Me →</a>
+      <a class="contact-btn" href="mailto:hryshchenkoruslan1@gmail.com">Contact Me →</a>
     </div>
 
   </div>
