@@ -1,603 +1,631 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Ruslan Hryshchenko — Full Stack Developer</title>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=DM+Sans:wght@300;400;500&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-  <style>
-    :root {
-      --ink: #101526;
-      --ink-2: #161d33;
-      --teal: #3a7d7a;
-      --teal-light: #5fa6a2;
-      --teal-soft: #c7ded9;
-      --gold: #b4832e;
-      --gold-light: #d6a850;
-      --paper: #f7f6f2;
-      --dark: #1a1d27;
-      --mid: #4a4f5e;
-      --soft: #868b98;
-      --line: #e1ded4;
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Ruslan Hryshchenko — Full-Stack Developer</title>
+<meta name="description" content="Ruslan Hryshchenko — Full-Stack Developer specializing in React, Next.js, Node.js and AI-powered products." />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#EEF1F5;
+    --panel:#FFFFFF;
+    --panel-2:#F5F7FA;
+    --ink:#141B2E;
+    --muted:#5B6472;
+    --accent:#9A5B12;
+    --accent-ink:#FFFFFF;
+    --accent2:#0F766E;
+    --line:#D7DCE3;
+    --line-strong:#B9C1CC;
+    --grid-line: rgba(20,27,46,0.05);
+    --shadow: 0 1px 0 rgba(20,27,46,0.04);
+    --focus: #1D4ED8;
+  }
+  @media (prefers-color-scheme: dark){
+    :root:not([data-theme="light"]){
+      --bg:#0B1220;
+      --panel:#121B2E;
+      --panel-2:#0F172A;
+      --ink:#E8ECF3;
+      --muted:#93A1B8;
+      --accent:#F2A93B;
+      --accent-ink:#191203;
+      --accent2:#5FB89C;
+      --line: rgba(232,236,243,0.12);
+      --line-strong: rgba(232,236,243,0.22);
+      --grid-line: rgba(232,236,243,0.05);
+      --shadow: 0 1px 0 rgba(0,0,0,0.3);
+      --focus: #7DA6FF;
     }
+  }
+  :root[data-theme="dark"]{
+    --bg:#0B1220;
+    --panel:#121B2E;
+    --panel-2:#0F172A;
+    --ink:#E8ECF3;
+    --muted:#93A1B8;
+    --accent:#F2A93B;
+    --accent-ink:#191203;
+    --accent2:#5FB89C;
+    --line: rgba(232,236,243,0.12);
+    --line-strong: rgba(232,236,243,0.22);
+    --grid-line: rgba(232,236,243,0.05);
+    --shadow: 0 1px 0 rgba(0,0,0,0.3);
+    --focus: #7DA6FF;
+  }
 
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-    html, body { overflow-x: hidden; }
-    img { max-width: 100%; }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--bg);
+    color:var(--ink);
+    font-family:'IBM Plex Sans', system-ui, sans-serif;
+    -webkit-font-smoothing:antialiased;
+  }
+  h1,h2,h3{
+    font-family:'Space Grotesk', system-ui, sans-serif;
+    font-weight:600;
+    line-height:1.15;
+    margin:0;
+  }
+  a{color:inherit;}
+  a:focus-visible, button:focus-visible{outline:2px solid var(--focus); outline-offset:3px;}
+  .mono{font-family:'IBM Plex Mono', monospace;}
 
-    body {
-      font-family: 'DM Sans', sans-serif;
-      background: linear-gradient(135deg, #1c2338 0%, #101526 55%, #0b0e19 100%);
-      min-height: 100vh;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      padding: 30px 20px;
+  .layout{
+    display:flex;
+    min-height:100vh;
+    max-width:1280px;
+    margin:0 auto;
+  }
+
+  /* ---------- SIDEBAR ---------- */
+  .sidebar{
+    position:sticky;
+    top:0;
+    height:100vh;
+    width:300px;
+    flex-shrink:0;
+    padding:40px 32px;
+    display:flex;
+    flex-direction:column;
+    gap:28px;
+    border-right:1px solid var(--line);
+    overflow-y:auto;
+  }
+  .mark{
+    width:56px;height:56px;
+    border-radius:10px;
+    background:var(--ink);
+    color:var(--bg);
+    display:flex;align-items:center;justify-content:center;
+    font-family:'Space Grotesk', sans-serif;
+    font-weight:700;
+    font-size:20px;
+    letter-spacing:0.02em;
+  }
+  .id h1{font-size:21px;margin-bottom:4px;}
+  .id p{margin:0;color:var(--muted); font-size:14px;}
+
+  nav.sidenav{display:flex;flex-direction:column;gap:2px;margin-top:4px;}
+  nav.sidenav a{
+    font-size:14px;
+    padding:8px 10px;
+    margin:0 -10px;
+    border-radius:6px;
+    text-decoration:none;
+    color:var(--muted);
+    display:flex;
+    align-items:center;
+    gap:10px;
+    transition:color .15s ease, background .15s ease;
+  }
+  nav.sidenav a .num{font-family:'IBM Plex Mono', monospace; font-size:12px; color:var(--line-strong); width:16px;}
+  nav.sidenav a:hover{color:var(--ink); background:var(--panel-2);}
+  nav.sidenav a.active{color:var(--ink); background:var(--panel-2);}
+  nav.sidenav a.active .num{color:var(--accent);}
+
+  .side-contact{
+    margin-top:auto;
+    padding-top:24px;
+    border-top:1px solid var(--line);
+    display:flex;
+    flex-direction:column;
+    gap:10px;
+  }
+  .side-contact a{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    font-size:13px;
+    color:var(--muted);
+    text-decoration:none;
+  }
+  .side-contact a:hover{color:var(--ink);}
+  .side-contact svg{flex-shrink:0; width:16px;height:16px;}
+  .side-langs{font-size:12px; color:var(--muted); line-height:1.6;}
+  .side-langs strong{color:var(--ink); font-weight:500;}
+
+  /* ---------- MAIN ---------- */
+  main{flex:1; min-width:0;}
+  section{
+    padding:64px 56px;
+    border-bottom:1px solid var(--line);
+  }
+  section:last-of-type{border-bottom:none;}
+  .eyebrow{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:12px;
+    color:var(--accent2);
+    margin-bottom:14px;
+  }
+  .section-head{margin-bottom:36px; max-width:640px;}
+  .section-head h2{font-size:26px;}
+  .section-head p{color:var(--muted); margin-top:10px; font-size:15px; line-height:1.6;}
+
+  /* Hero */
+  .hero{
+    position:relative;
+    padding-top:72px;
+    background-image:
+      linear-gradient(var(--grid-line) 1px, transparent 1px),
+      linear-gradient(90deg, var(--grid-line) 1px, transparent 1px);
+    background-size: 32px 32px;
+  }
+  .hero-kicker{font-family:'IBM Plex Mono',monospace; font-size:13px; color:var(--accent2); margin-bottom:18px;}
+  .hero h1{
+    font-size:clamp(34px, 4.6vw, 54px);
+    max-width:11ch;
+    letter-spacing:-0.01em;
+  }
+  .hero .role{
+    font-size:clamp(16px,2vw,19px);
+    color:var(--muted);
+    margin-top:16px;
+    max-width:52ch;
+    line-height:1.55;
+  }
+  .hero-cta{display:flex; gap:14px; margin-top:30px; flex-wrap:wrap;}
+  .btn{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:13px;
+    padding:11px 18px;
+    border-radius:8px;
+    text-decoration:none;
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    border:1px solid var(--line-strong);
+    color:var(--ink);
+    transition:transform .12s ease, border-color .12s ease, background .12s ease;
+  }
+  .btn.primary{background:var(--accent); color:var(--accent-ink); border-color:var(--accent);}
+  .btn:hover{transform:translateY(-1px); border-color:var(--accent);}
+
+  .stat-row{
+    margin-top:56px;
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    border-top:1px solid var(--line);
+  }
+  .stat{
+    padding:22px 24px 22px 0;
+    border-right:1px solid var(--line);
+  }
+  .stat:last-child{border-right:none;}
+  .stat .num{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:26px;
+    color:var(--accent);
+  }
+  .stat .label{font-size:13px; color:var(--muted); margin-top:6px; line-height:1.4;}
+
+  /* About / Skills */
+  .about-body{max-width:66ch; color:var(--ink); font-size:16px; line-height:1.75;}
+
+  .skill-groups{display:grid; grid-template-columns:1fr 1fr; gap:28px 40px;}
+  .skill-group h3{font-size:14px; font-family:'IBM Plex Mono',monospace; font-weight:500; color:var(--accent2); margin-bottom:12px;}
+  .tags{display:flex; flex-wrap:wrap; gap:8px;}
+  .tags span{
+    font-size:13px;
+    padding:6px 11px;
+    border:1px solid var(--line-strong);
+    border-radius:6px;
+    color:var(--ink);
+  }
+
+  /* Experience */
+  .timeline{border-top:1px solid var(--line);}
+  .job{
+    display:grid;
+    grid-template-columns:140px 1fr;
+    gap:24px;
+    padding:28px 0;
+    border-bottom:1px solid var(--line);
+  }
+  .job .dates{font-family:'IBM Plex Mono', monospace; font-size:13px; color:var(--muted); padding-top:2px;}
+  .job h3{font-size:17px;}
+  .job .org{color:var(--accent2); font-size:14px; margin-top:3px; font-family:'IBM Plex Mono',monospace;}
+  .job .meta{color:var(--muted); font-size:13px; margin-top:6px;}
+  .job ul{margin:14px 0 0; padding-left:18px; color:var(--ink); font-size:14.5px; line-height:1.65;}
+  .job li{margin-bottom:6px;}
+  .job li::marker{color:var(--accent);}
+
+  /* Projects */
+  .projects{display:grid; grid-template-columns:1fr 1fr; gap:1px; background:var(--line); border:1px solid var(--line);}
+  .project{background:var(--panel); padding:26px;}
+  .project h3{font-size:16px; display:flex; align-items:center; gap:8px;}
+  .project h3 a{text-decoration:none; display:inline-flex; align-items:center; gap:6px;}
+  .project h3 svg{width:14px;height:14px; color:var(--muted);}
+  .project p{color:var(--muted); font-size:14px; line-height:1.6; margin:10px 0 14px;}
+  .project .tags span{font-size:11.5px; padding:4px 8px;}
+
+  /* Education */
+  .edu{border-top:1px solid var(--line);}
+  .edu-item{display:grid; grid-template-columns:140px 1fr; gap:24px; padding:22px 0; border-bottom:1px solid var(--line);}
+  .edu-item:last-child{border-bottom:none;}
+  .edu-item .dates{font-family:'IBM Plex Mono', monospace; font-size:13px; color:var(--muted);}
+  .edu-item h3{font-size:15.5px; font-weight:500;}
+  .edu-item .org{color:var(--muted); font-size:13.5px; margin-top:3px;}
+  .edu-item .status{font-family:'IBM Plex Mono',monospace; font-size:11.5px; color:var(--accent2); margin-top:6px;}
+
+  /* Contact / Footer */
+  .contact-grid{display:grid; grid-template-columns:1fr 1fr; gap:20px; max-width:560px;}
+  .contact-row{
+    display:flex; align-items:center; gap:12px;
+    padding:16px 0;
+    border-bottom:1px solid var(--line);
+    text-decoration:none;
+    color:var(--ink);
+    font-size:14.5px;
+  }
+  .contact-row svg{width:18px;height:18px; color:var(--accent2); flex-shrink:0;}
+  .contact-row:hover{color:var(--accent);}
+  footer{padding:28px 56px; color:var(--muted); font-size:12.5px; font-family:'IBM Plex Mono',monospace;}
+
+  /* mobile */
+  .mobile-bar{display:none;}
+  @media (max-width: 880px){
+    .layout{display:block;}
+    .sidebar{
+      position:sticky; top:0; height:auto; width:auto;
+      flex-direction:row; align-items:center; justify-content:space-between;
+      padding:16px 20px; border-right:none; border-bottom:1px solid var(--line);
+      background:var(--bg); z-index:10; gap:12px;
     }
-
-    .card {
-      display: flex;
-      width: 900px;
-      max-width: 100%;
-      border-radius: 20px;
-      overflow: hidden;
-      box-shadow: 0 30px 80px rgba(0,0,0,0.45);
-      animation: fadeUp 0.7s ease both;
-    }
-
-    @keyframes fadeUp {
-      from { opacity: 0; transform: translateY(30px); }
-      to   { opacity: 1; transform: translateY(0); }
-    }
-
-    /* ── SIDEBAR ── */
-    .sidebar {
-      background: var(--ink);
-      background-image: linear-gradient(180deg, var(--ink) 0%, var(--ink-2) 100%);
-      width: 290px;
-      flex-shrink: 0;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      padding: 40px 28px;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .sidebar::before {
-      content: '';
-      position: absolute;
-      top: -60px; right: -60px;
-      width: 180px; height: 180px;
-      border-radius: 50%;
-      background: rgba(255,255,255,0.04);
-    }
-    .sidebar::after {
-      content: '';
-      position: absolute;
-      bottom: -40px; left: -40px;
-      width: 140px; height: 140px;
-      border-radius: 50%;
-      background: rgba(255,255,255,0.03);
-    }
-
-    .prompt-tag {
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 0.7rem;
-      color: var(--teal-soft);
-      opacity: 0.8;
-      letter-spacing: 0.04em;
-      margin-bottom: 18px;
-      align-self: flex-start;
-    }
-    .prompt-tag span { color: var(--gold-light); }
-
-    .avatar-wrap {
-      position: relative;
-      margin-bottom: 22px;
-    }
-
-    .avatar-wrap::before {
-      content: '';
-      position: absolute;
-      inset: -4px;
-      border-radius: 50%;
-      background: conic-gradient(var(--teal-light), var(--gold-light), var(--teal-soft), var(--teal-light));
-      animation: spin 6s linear infinite;
-    }
-
-    @keyframes spin { to { transform: rotate(360deg); } }
-
-    .avatar-wrap::after {
-      content: '';
-      position: absolute;
-      inset: -2px;
-      border-radius: 50%;
-      background: var(--ink);
-    }
-
-    .avatar {
-      width: 130px;
-      height: 130px;
-      border-radius: 50%;
-      object-fit: cover;
-      object-position: center top;
-      position: relative;
-      z-index: 1;
-      display: block;
-    }
-
-    .sidebar-name {
-      font-family: 'Playfair Display', serif;
-      font-size: 1.25rem;
-      color: #fff;
-      text-align: center;
-      margin-bottom: 4px;
-      letter-spacing: 0.01em;
-    }
-
-    .sidebar-role {
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 0.72rem;
-      color: var(--teal-soft);
-      text-align: center;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      margin-bottom: 28px;
-    }
-
-    .sidebar-divider {
-      width: 40px;
-      height: 2px;
-      background: var(--gold);
-      border-radius: 2px;
-      margin-bottom: 28px;
-    }
-
-    .sidebar-section {
-      width: 100%;
-      margin-bottom: 24px;
-    }
-
-    .sidebar-section-title {
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 0.62rem;
-      letter-spacing: 0.18em;
-      text-transform: uppercase;
-      color: #7d84a0;
-      margin-bottom: 10px;
-    }
-
-    .info-row {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      margin-bottom: 8px;
-      font-size: 0.82rem;
-      color: #cdd3e6;
-    }
-
-    .info-icon {
-      font-size: 0.9rem;
-      width: 18px;
-      text-align: center;
-      flex-shrink: 0;
-      color: var(--teal-soft);
-    }
-
-    .social-links {
-      display: flex;
-      flex-direction: column;
-      gap: 8px;
-      width: 100%;
-    }
-
-    .social-link {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      color: #cdd3e6;
-      text-decoration: none;
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 0.78rem;
-      padding: 8px 12px;
-      border-radius: 8px;
-      background: rgba(255,255,255,0.05);
-      border: 1px solid rgba(255,255,255,0.08);
-      transition: background 0.2s, color 0.2s;
-    }
-
-    .social-link:hover {
-      background: rgba(255,255,255,0.1);
-      color: #fff;
-    }
-
-    .btn-cv {
-      margin-top: auto;
-      display: block;
-      width: 100%;
-      text-align: center;
-      padding: 12px;
-      background: var(--teal);
-      color: #fff;
-      font-family: 'DM Sans', sans-serif;
-      font-weight: 500;
-      font-size: 0.85rem;
-      letter-spacing: 0.06em;
-      text-decoration: none;
-      border-radius: 10px;
-      transition: background 0.2s, transform 0.15s;
-    }
-
-    .btn-cv:hover {
-      background: var(--teal-light);
-      transform: translateY(-1px);
-    }
-
-    /* ── MAIN CONTENT ── */
-    .content {
-      flex: 1;
-      background: var(--paper);
-      padding: 44px 42px;
-      overflow-y: auto;
-    }
-
-    .greeting {
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 0.74rem;
-      letter-spacing: 0.16em;
-      text-transform: uppercase;
-      color: var(--teal);
-      margin-bottom: 6px;
-      font-weight: 500;
-    }
-
-    .hero-name {
-      font-family: 'Playfair Display', serif;
-      font-size: 2.6rem;
-      color: var(--dark);
-      line-height: 1.1;
-      margin-bottom: 6px;
-    }
-
-    .hero-sub {
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 0.82rem;
-      color: var(--gold);
-      font-weight: 500;
-      letter-spacing: 0.02em;
-      margin-bottom: 20px;
-    }
-
-    .bio {
-      font-size: 0.9rem;
-      color: var(--mid);
-      line-height: 1.75;
-      margin-bottom: 30px;
-      border-left: 3px solid var(--teal);
-      padding-left: 16px;
-    }
-
-    .section-title {
-      font-family: 'Playfair Display', serif;
-      font-size: 1.05rem;
-      color: var(--dark);
-      margin-bottom: 14px;
-      display: flex;
-      align-items: center;
-      gap: 10px;
-    }
-
-    .section-title::after {
-      content: '';
-      flex: 1;
-      height: 1px;
-      background: var(--line);
-    }
-
-    /* Tags */
-    .tags {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 8px;
-      margin-bottom: 30px;
-    }
-
-    .tag {
-      padding: 5px 13px;
-      font-size: 0.76rem;
-      font-weight: 500;
-      border-radius: 20px;
-      letter-spacing: 0.02em;
-      transition: transform 0.15s;
-      font-family: 'JetBrains Mono', monospace;
-    }
-
-    .tag:hover { transform: translateY(-2px); }
-
-    .tag-teal  { background: #e6f0ef; color: var(--teal);      border: 1px solid #b9d6d3; }
-    .tag-gold  { background: #f7ecd9; color: #8a621f;          border: 1px solid #e4c384; }
-    .tag-mute  { background: #eceef4; color: #545b74;          border: 1px solid #ccd1e2; }
-
-    /* Projects */
-    .projects {
-      display: flex;
-      flex-direction: column;
-      gap: 12px;
-      margin-bottom: 30px;
-    }
-
-    .project-card-link {
-      display: block;
-      text-decoration: none;
-      color: inherit;
-    }
-
-    .project-card {
-      background: #fff;
-      border-radius: 12px;
-      padding: 16px 20px;
-      display: flex;
-      align-items: center;
-      flex-wrap: wrap;
-      gap: 6px 14px;
-      box-shadow: 0 2px 10px rgba(16,21,38,0.06);
-      border-left: 4px solid transparent;
-      transition: border-color 0.2s, transform 0.2s, box-shadow 0.2s;
-    }
-
-    .project-card:hover {
-      transform: translateX(4px);
-      box-shadow: 0 4px 20px rgba(16,21,38,0.1);
-    }
-
-    .project-card.c-teal { border-left-color: var(--teal); }
-    .project-card.c-gold { border-left-color: var(--gold); }
-    .project-card.c-ink  { border-left-color: var(--ink-2); }
-
-    .project-icon { font-size: 1.5rem; flex-shrink: 0; }
-
-    .project-info { flex: 1 1 200px; min-width: 0; }
-    .project-name {
-      font-weight: 500;
-      font-size: 0.9rem;
-      color: var(--dark);
-      margin-bottom: 2px;
-      text-decoration: none;
-    }
-    .project-desc {
-      font-size: 0.78rem;
-      color: var(--soft);
-      text-decoration: none;
-    }
-
-    .project-tag {
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 0.68rem;
-      padding: 3px 10px;
-      border-radius: 20px;
-      background: #f0f0f0;
-      color: var(--mid);
-      white-space: nowrap;
-      flex-shrink: 0;
-      margin-left: auto;
-      text-decoration: none;
-    }
-
-    /* Contact button */
-    .contact-btn {
-      display: inline-block;
-      padding: 11px 28px;
-      background: var(--ink);
-      color: #fff;
-      border-radius: 10px;
-      text-decoration: none;
-      font-size: 0.85rem;
-      font-weight: 500;
-      letter-spacing: 0.05em;
-      transition: background 0.2s, transform 0.15s;
-    }
-
-    .contact-btn:hover {
-      background: var(--ink-2);
-      transform: translateY(-1px);
-    }
-
-    /* Right-side icons strip */
-    .nav-strip {
-      position: fixed;
-      right: 20px;
-      top: 50%;
-      transform: translateY(-50%);
-      display: flex;
-      flex-direction: column;
-      gap: 14px;
-      z-index: 10;
-    }
-
-    .nav-dot {
-      width: 36px;
-      height: 36px;
-      border-radius: 50%;
-      background: rgba(247,246,242,0.9);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 0.9rem;
-      box-shadow: 0 2px 10px rgba(0,0,0,0.25);
-      cursor: pointer;
-      transition: background 0.2s, transform 0.2s, color 0.2s;
-      text-decoration: none;
-      color: var(--ink);
-    }
-
-    .nav-dot:hover {
-      background: var(--teal);
-      color: #fff;
-      transform: scale(1.1);
-    }
-
-    @media (max-width: 700px) {
-      body { padding: 0; align-items: flex-start; }
-      .card {
-        flex-direction: column;
-        width: 100%;
-        border-radius: 0;
-        box-shadow: none;
-      }
-      .sidebar {
-        width: 100%;
-        padding: 28px 24px;
-        align-items: center;
-      }
-      .nav-strip { display: none; }
-
-      .content { padding: 30px 22px 40px; }
-
-      .hero-name { font-size: 2rem; }
-      .hero-sub { font-size: 0.76rem; }
-      .bio { font-size: 0.86rem; }
-
-      .section-title { font-size: 1rem; margin-top: 4px; }
-
-      .project-card { padding: 14px 16px; }
-      .project-tag { margin-left: 0; }
-
-      .contact-btn { display: block; text-align: center; }
-    }
-
-    @media (max-width: 380px) {
-      .hero-name { font-size: 1.65rem; }
-      .avatar, .avatar-wrap { width: 110px; height: 110px; }
-      .sidebar-name { font-size: 1.1rem; }
-      .content { padding: 26px 16px 36px; }
-      .tags { gap: 6px; }
-      .tag { font-size: 0.7rem; padding: 4px 10px; }
-    }
-  </style>
+    .sidebar > nav.sidenav, .sidebar > .side-contact{display:none;}
+    section{padding:44px 24px;}
+    .stat-row{grid-template-columns:1fr 1fr;}
+    .stat:nth-child(2n){border-right:none;}
+    .stat:nth-child(n+3){border-top:1px solid var(--line);}
+    .skill-groups{grid-template-columns:1fr;}
+    .projects{grid-template-columns:1fr;}
+    .job, .edu-item{grid-template-columns:1fr;}
+    .contact-grid{grid-template-columns:1fr;}
+    footer{padding:24px;}
+  }
+</style>
 </head>
 <body>
 
-  <!-- Side navigation dots -->
-  <div class="nav-strip">
-    <a class="nav-dot" href="https://github.com/r671h" target="_blank" title="GitHub">⌥</a>
-    <a class="nav-dot" href="https://www.linkedin.com/in/ruslan-hryshchenko/" target="_blank" title="LinkedIn">in</a>
-    <a class="nav-dot" href="mailto:hryshchenkoruslan1@gmail.com" title="Email">✉</a>
-    <a class="nav-dot" href="#" title="Location">📍</a>
-  </div>
+<div class="layout">
 
-  <div class="card">
-
-    <!-- SIDEBAR -->
-    <div class="sidebar">
-      <div class="prompt-tag"><span>$</span> whoami</div>
-      <div class="avatar-wrap">
-        <img class="avatar" src="./photo_2026-08-16_19-46-52.jpg" alt="Ruslan Hryshchenko">
+  <!-- SIDEBAR -->
+  <aside class="sidebar">
+    <div style="display:flex; align-items:center; gap:14px;">
+      <div class="mark" aria-hidden="true">RH</div>
+      <div class="id">
+        <h1>Ruslan Hryshchenko</h1>
+        <p>Full-Stack Developer</p>
       </div>
-      <div class="sidebar-name">Ruslan Hryshchenko</div>
-      <div class="sidebar-role">Full Stack Developer</div>
-      <div class="sidebar-divider"></div>
+    </div>
 
-      <div class="sidebar-section">
-        <div class="sidebar-section-title">Contact</div>
-        <div class="info-row"><span class="info-icon">⌂</span> Geseke, Germany</div>
-        <div class="info-row"><span class="info-icon">🎓</span> Zaporizhzhia National University</div>
-        <div class="info-row"><span class="info-icon">⇄</span> Open to Remote / Hybrid</div>
+    <nav class="sidenav" aria-label="Section navigation">
+      <a href="#about"><span class="num">01</span>Profile</a>
+      <a href="#skills"><span class="num">02</span>Skills</a>
+      <a href="#experience"><span class="num">03</span>Experience</a>
+      <a href="#projects"><span class="num">04</span>Projects</a>
+      <a href="#education"><span class="num">05</span>Education</a>
+      <a href="#contact"><span class="num">06</span>Contact</a>
+    </nav>
+
+    <div class="side-contact">
+      <a href="mailto:hryshchenkoruslan1@gmail.com">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg>
+        hryshchenkoruslan1@gmail.com
+      </a>
+      <a href="tel:+4915140176396">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.3 1.8.6 2.7a2 2 0 0 1-.5 2.1L8 9.7a16 16 0 0 0 6 6l1.2-1.2a2 2 0 0 1 2.1-.5c.9.3 1.8.5 2.7.6a2 2 0 0 1 2 2.1z"/></svg>
+        +49 151 40176396
+      </a>
+      <a href="https://github.com/r671h" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.58 2 12.25c0 4.53 2.87 8.37 6.84 9.73.5.1.68-.22.68-.5 0-.24-.01-1.04-.01-1.88-2.78.62-3.37-1.22-3.37-1.22-.46-1.2-1.11-1.52-1.11-1.52-.91-.64.07-.63.07-.63 1 .07 1.53 1.05 1.53 1.05.89 1.57 2.34 1.12 2.91.85.09-.66.35-1.12.63-1.38-2.22-.26-4.56-1.14-4.56-5.06 0-1.12.39-2.03 1.03-2.75-.1-.26-.45-1.32.1-2.75 0 0 .84-.28 2.75 1.05a9.3 9.3 0 0 1 2.5-.35c.85 0 1.71.12 2.5.35 1.9-1.33 2.74-1.05 2.74-1.05.55 1.43.2 2.49.1 2.75.64.72 1.03 1.63 1.03 2.75 0 3.93-2.34 4.8-4.57 5.05.36.32.68.95.68 1.92 0 1.39-.01 2.5-.01 2.85 0 .28.18.61.69.5A10.26 10.26 0 0 0 22 12.25C22 6.58 17.52 2 12 2z"/></svg>
+        github.com/r671h
+      </a>
+      <a href="https://www.linkedin.com/in/ruslan-hryshchenko/" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M6.94 5a2 2 0 1 1-4 0 2 2 0 0 1 4 0zM3.2 8.75h3.5V21H3.2zM9.5 8.75h3.35v1.68h.05c.47-.87 1.6-1.79 3.3-1.79 3.53 0 4.18 2.28 4.18 5.24V21h-3.5v-6.1c0-1.46-.03-3.34-2.05-3.34-2.05 0-2.37 1.58-2.37 3.23V21H9.5z"/></svg>
+        linkedin.com/in/ruslan-hryshchenko
+      </a>
+      <div class="side-langs">
+        <strong>Geseke, NRW, Germany</strong><br/>
+        EN C1 · DE C1 · RU / UA native
+      </div>
+    </div>
+  </aside>
+
+  <!-- MAIN -->
+  <main>
+
+    <!-- HERO -->
+    <section class="hero" id="top">
+      <div class="hero-kicker">Full-Stack Developer — JavaScript / React / Node.js</div>
+      <h1>I build products that ship, from data model to deploy.</h1>
+      <p class="role">Two years of taking web apps end to end — React and Next.js front ends, Node.js and Express APIs, MongoDB and PostgreSQL data layers, and AI features on the Claude and Gemini APIs. Currently based in Geseke, Germany.</p>
+      <div class="hero-cta">
+        <a class="btn primary" href="mailto:hryshchenkoruslan1@gmail.com">Get in touch</a>
+        <a class="btn" href="https://github.com/r671h" target="_blank" rel="noopener">View GitHub</a>
+        <a class="btn" href="#experience">See experience</a>
       </div>
 
-      <div class="sidebar-section">
-        <div class="sidebar-section-title">Links</div>
-        <div class="social-links">
-          <a class="social-link" href="https://github.com/r671h" target="_blank">⌥ github.com/r671h</a>
-          <a class="social-link" href="https://www.linkedin.com/in/ruslan-hryshchenko/" target="_blank">in linkedin.com/in/ruslan-h</a>
-          <a class="social-link" href="mailto:hryshchenkoruslan1@gmail.com">✉ hryshchenkoruslan1@gmail.com</a>
+      <div class="stat-row">
+        <div class="stat">
+          <div class="num">50+</div>
+          <div class="label">Beta users on a personal finance platform I helped build</div>
+        </div>
+        <div class="stat">
+          <div class="num">46%</div>
+          <div class="label">Less manual data-review time after shipping an AI analyst agent</div>
+        </div>
+        <div class="stat">
+          <div class="num">5.0★</div>
+          <div class="label">Freelance rating held across 30+ Fiverr engagements</div>
+        </div>
+        <div class="stat">
+          <div class="num">40%</div>
+          <div class="label">Faster average page load times delivered for clients</div>
         </div>
       </div>
+    </section>
 
-      <a class="btn-cv" href="./RuslanHryshchenkoCV.pdf" target="_blank">↓ Download CV</a>
-    </div>
-
-    <!-- MAIN CONTENT -->
-    <div class="content">
-      <div class="greeting">// Hello there</div>
-      <h1 class="hero-name">Ruslan<br>Hryshchenko</h1>
-      <div class="hero-sub">Full Stack Developer · React · Next.js · Node.js · AI Integration</div>
-
-      <p class="bio">
-        I engineer production-grade web applications across the entire stack — typed REST APIs,
-        relational and document databases, real-time features with WebSockets, and AI-driven
-        functionality built on the Claude and Gemini APIs. Based in Germany, shipping fast and
-        open to remote, hybrid, or on-site roles.
+    <!-- ABOUT -->
+    <section id="about">
+      <div class="section-head">
+        <div class="eyebrow">01 — Profile</div>
+        <h2>About</h2>
+      </div>
+      <p class="about-body">
+        I'm a full-stack developer who likes owning a feature end to end — from the data model through to a Docker Compose
+        and CI/CD deployment. Most of my recent work sits at the intersection of product engineering and applied AI: building
+        real-time dashboards, authentication systems, and chat agents on the Claude and Gemini APIs that save people real time
+        on repetitive work. Alongside development, I mentor a 20-person learner cohort part-time, and I'm currently completing
+        a Bachelor's in Computer Science while working German B2 into daily use.
       </p>
+    </section>
 
-      <div class="section-title">Tech Stack</div>
-      <div class="tags">
-        <span class="tag tag-teal">React</span>
-        <span class="tag tag-teal">Next.js</span>
-        <span class="tag tag-teal">TypeScript</span>
-        <span class="tag tag-teal">Tailwind CSS</span>
-        <span class="tag tag-mute">Node.js</span>
-        <span class="tag tag-mute">Express.js</span>
-        <span class="tag tag-mute">Socket.io</span>
-        <span class="tag tag-mute">REST APIs</span>
-        <span class="tag tag-mute">MongoDB</span>
-        <span class="tag tag-mute">PostgreSQL</span>
-        <span class="tag tag-mute">Prisma</span>
-        <span class="tag tag-gold">Claude API</span>
-        <span class="tag tag-gold">Gemini API</span>
-        <span class="tag tag-gold">JWT</span>
-        <span class="tag tag-mute">Docker</span>
-        <span class="tag tag-mute">Git</span>
+    <!-- SKILLS -->
+    <section id="skills">
+      <div class="section-head">
+        <div class="eyebrow">02 — Toolkit</div>
+        <h2>Skills</h2>
+      </div>
+      <div class="skill-groups">
+        <div class="skill-group">
+          <h3>Frontend</h3>
+          <div class="tags"><span>React</span><span>Next.js</span><span>TypeScript</span><span>Tailwind CSS</span></div>
+        </div>
+        <div class="skill-group">
+          <h3>Backend</h3>
+          <div class="tags"><span>Node.js</span><span>Express.js</span><span>REST APIs</span><span>Socket.io / WebSockets</span></div>
+        </div>
+        <div class="skill-group">
+          <h3>Data</h3>
+          <div class="tags"><span>MongoDB</span><span>PostgreSQL</span><span>Prisma ORM</span><span>Supabase</span></div>
+        </div>
+        <div class="skill-group">
+          <h3>AI &amp; Auth</h3>
+          <div class="tags"><span>Claude API</span><span>Gemini API</span><span>JWT</span><span>bcrypt</span><span>RBAC</span></div>
+        </div>
+        <div class="skill-group">
+          <h3>Tooling &amp; DevOps</h3>
+          <div class="tags"><span>Git</span><span>Docker / Compose</span><span>CI/CD</span><span>Vercel</span><span>Zustand</span></div>
+        </div>
+        <div class="skill-group">
+          <h3>Languages</h3>
+          <div class="tags"><span>English (C1)</span><span>German (C1)</span><span>Russian (Native)</span><span>Ukrainian (Native)</span></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- EXPERIENCE -->
+    <section id="experience">
+      <div class="section-head">
+        <div class="eyebrow">03 — Track record</div>
+        <h2>Experience</h2>
+        <p>Several of these overlapped — I ran freelance, contract and mentoring work in parallel rather than one role at a time.</p>
       </div>
 
-      <div class="section-title">Projects</div>
+      <div class="timeline">
+        <div class="job">
+          <div class="dates">Sep 2026 —<br/>Present</div>
+          <div>
+            <h3>Mentor</h3>
+            <div class="org">DT Akademie · Self-employed (Gewerbe)</div>
+            <div class="meta">Remote, Germany · Part-time, concurrent with freelance development</div>
+            <ul>
+              <li>Lead a 20-person learner cohort, organizing guest-speaker sessions and structuring lecture materials that lifted course completion rates by 30%.</li>
+              <li>Run the mentorship as a self-registered business, handling end-to-end scheduling and content delivery for 20+ learners per cohort.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="job">
+          <div class="dates">Oct 2024 —<br/>Aug 2026</div>
+          <div>
+            <h3>Frontend Developer</h3>
+            <div class="org">Fiverr · Freelance</div>
+            <div class="meta">Remote, Germany · Part-time, concurrent with contract and work-study roles</div>
+            <ul>
+              <li>Maintained a 5-star client rating across 30+ engagements delivering high-performance React landing pages end to end, cutting average page load times by 40%.</li>
+              <li>Refactored outdated codebases into modern React components for global clients, lifting Lighthouse scores by 35%.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="job">
+          <div class="dates">Aug 2025 —<br/>Jun 2026</div>
+          <div>
+            <h3>Full-Stack Developer</h3>
+            <div class="org">QuantCode · Contract, part-time</div>
+            <div class="meta">Remote, Germany · Concurrent with Fiverr freelance work</div>
+            <ul>
+              <li>Grew a personal finance platform to 50+ active beta users by shipping JWT/RBAC auth, a real-time analytics dashboard, and an AI financial-analyst chat agent that cut manual data review time by 46%.</li>
+              <li>Containerized the full stack with Docker Compose and built a CI/CD pipeline, cutting release time from hours to under 10 minutes.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="job">
+          <div class="dates">Feb 2025 —<br/>Jun 2025</div>
+          <div>
+            <h3>Junior Full-Stack Developer</h3>
+            <div class="org">Delta Tech · Work-study</div>
+            <div class="meta">Remote, Warsaw · Agile/Scrum, 15-person team</div>
+            <ul>
+              <li>Enabled real-time collaboration for a 15-person Agile team by building a WebSocket messaging module inside a server-side-rendered e-commerce platform (Next.js, Supabase), cutting status-update turnaround from minutes to seconds.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PROJECTS -->
+    <section id="projects">
+      <div class="section-head">
+        <div class="eyebrow">04 — Selected work</div>
+        <h2>Projects</h2>
+      </div>
       <div class="projects">
-        <a class="project-card-link" href="https://weather-ai-forecast-assistent.vercel.app/" target="_blank">
-          <div class="project-card c-teal">
-            <div class="project-icon">🌦</div>
-            <div class="project-info">
-              <div class="project-name">AI Weather Forecast Assistant</div>
-              <div class="project-desc">Live weather data turned into plain-language, AI-generated recommendations</div>
-            </div>
-            <span class="project-tag">Next.js · Gemini</span>
+        <div class="project">
+          <h3><a href="https://github.com/r671h/FinTracker" target="_blank" rel="noopener">FinTrack — Personal Finance Tracker
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M7 17L17 7M7 7h10v10"/></svg>
+          </a></h3>
+          <p>A multi-account finance tracker with CSV import and an AI finance-analyst chat feature that cut manual expense categorization time by 50%.</p>
+          <div class="tags"><span>Next.js</span><span>Express.js</span><span>MongoDB</span><span>Claude API</span></div>
+        </div>
+        <div class="project">
+          <h3><a href="https://github.com/r671h/MyMessanger" target="_blank" rel="noopener">MyMessenger — Real-time Chat App
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M7 17L17 7M7 7h10v10"/></svg>
+          </a></h3>
+          <p>Real-time messaging platform with 1:1 and group chat, media uploads, and presence indicators, sustaining sub-200ms delivery under concurrent load.</p>
+          <div class="tags"><span>Next.js</span><span>Socket.io</span><span>PostgreSQL</span><span>Prisma</span></div>
+        </div>
+        <div class="project">
+          <h3><a href="https://github.com/r671h/WeatherAiForecastAssistent" target="_blank" rel="noopener">AI Weather Forecast Assistant
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M7 17L17 7M7 7h10v10"/></svg>
+          </a></h3>
+          <p>Turns live forecasts into plain-language, activity-based recommendations, reducing time-to-decision for outdoor planning.</p>
+          <div class="tags"><span>Next.js</span><span>TypeScript</span><span>Express.js</span><span>Claude API</span><span>Gemini API</span></div>
+        </div>
+        <div class="project">
+          <h3><a href="https://github.com/r671h/Code_Reviewer" target="_blank" rel="noopener">CodeReviewer — AI PR Review Agent
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M7 17L17 7M7 7h10v10"/></svg>
+          </a></h3>
+          <p>An AI agent that reviews GitHub pull requests end to end: fetches the diff, builds AST-based static-analysis context per changed file, and analyzes each with a schema-constrained LLM call before posting the result as a PR comment. Built as a LangGraph state machine with typed MCP tool boundaries, covered by 77 tests, and runnable as a CLI or GitHub Action.</p>
+          <div class="tags"><span>TypeScript</span><span>LangGraph</span><span>MCP</span><span>Gemini API</span><span>GitHub API</span></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- EDUCATION -->
+    <section id="education">
+      <div class="section-head">
+        <div class="eyebrow">05 — Education</div>
+        <h2>Education</h2>
+      </div>
+      <div class="edu">
+        <div class="edu-item">
+          <div class="dates">Aug 2026 —<br/>Jun 2029</div>
+          <div>
+            <h3>Bachelor of Technology, Computer Science</h3>
+            <div class="org">Zaporizhzhya National Technical University</div>
+            <div class="status">In progress</div>
           </div>
+        </div>
+        <div class="edu-item">
+          <div class="dates">Sep 2022 —<br/>Jul 2026</div>
+          <div>
+            <h3>Junior Bachelor, Computer Engineering</h3>
+            <div class="org">College of Computer Technologies, Zaporizhzhia National University</div>
+            <div class="status">Completed</div>
+          </div>
+        </div>
+        <div class="edu-item">
+          <div class="dates">Jan 2026 —<br/>Aug 2026</div>
+          <div>
+            <h3>German B2 for Professional Purposes</h3>
+            <div class="org">Kolping Bildungswerk, Germany</div>
+            <div class="status">Completed</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact">
+      <div class="section-head">
+        <div class="eyebrow">06 — Contact</div>
+        <h2>Let's work together</h2>
+        <p>Open to full-stack and frontend roles, and to contract work involving AI-powered product features.</p>
+      </div>
+      <div class="contact-grid">
+        <a class="contact-row" href="mailto:hryshchenkoruslan1@gmail.com">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg>
+          hryshchenkoruslan1@gmail.com
         </a>
-        <a class="project-card-link" href="https://fin-tracker-hqzb.vercel.app/dashboard" target="_blank">
-          <div class="project-card c-gold">
-            <div class="project-icon">💰</div>
-            <div class="project-info">
-              <div class="project-name">FinTrack — Personal Finance Tracker</div>
-              <div class="project-desc">Multi-account tracker with CSV import and an AI finance analyst chat</div>
-            </div>
-            <span class="project-tag">Next.js · Express · Claude</span>
-          </div>
+        <a class="contact-row" href="tel:+4915140176396">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.3 1.8.6 2.7a2 2 0 0 1-.5 2.1L8 9.7a16 16 0 0 0 6 6l1.2-1.2a2 2 0 0 1 2.1-.5c.9.3 1.8.5 2.7.6a2 2 0 0 1 2 2.1z"/></svg>
+          +49 151 40176396
         </a>
-        <a class="project-card-link" href="https://my-messanger-xi.vercel.app/" target="_blank">
-          <div class="project-card c-ink">
-            <div class="project-icon">💬</div>
-            <div class="project-info">
-              <div class="project-name">MyMessenger — Real-time Chat App</div>
-              <div class="project-desc">1:1 and group messaging with live presence over Socket.io + PostgreSQL</div>
-            </div>
-            <span class="project-tag">Socket.io · Prisma</span>
-          </div>
+        <a class="contact-row" href="https://github.com/r671h" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.58 2 12.25c0 4.53 2.87 8.37 6.84 9.73.5.1.68-.22.68-.5 0-.24-.01-1.04-.01-1.88-2.78.62-3.37-1.22-3.37-1.22-.46-1.2-1.11-1.52-1.11-1.52-.91-.64.07-.63.07-.63 1 .07 1.53 1.05 1.53 1.05.89 1.57 2.34 1.12 2.91.85.09-.66.35-1.12.63-1.38-2.22-.26-4.56-1.14-4.56-5.06 0-1.12.39-2.03 1.03-2.75-.1-.26-.45-1.32.1-2.75 0 0 .84-.28 2.75 1.05a9.3 9.3 0 0 1 2.5-.35c.85 0 1.71.12 2.5.35 1.9-1.33 2.74-1.05 2.74-1.05.55 1.43.2 2.49.1 2.75.64.72 1.03 1.63 1.03 2.75 0 3.93-2.34 4.8-4.57 5.05.36.32.68.95.68 1.92 0 1.39-.01 2.5-.01 2.85 0 .28.18.61.69.5A10.26 10.26 0 0 0 22 12.25C22 6.58 17.52 2 12 2z"/></svg>
+          github.com/r671h
         </a>
-        <a class="project-card-link" href="https://my-shop-tau-five.vercel.app/" target="_blank">
-          <div class="project-card c-teal">
-            <div class="project-icon">🛒</div>
-            <div class="project-info">
-              <div class="project-name">E-Commerce Storefront</div>
-              <div class="project-desc">Online store with product catalog, JWT auth, and a shopping cart</div>
-            </div>
-            <span class="project-tag">Next.js · MongoDB</span>
-          </div>
+        <a class="contact-row" href="https://www.linkedin.com/in/ruslan-hryshchenko/" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M6.94 5a2 2 0 1 1-4 0 2 2 0 0 1 4 0zM3.2 8.75h3.5V21H3.2zM9.5 8.75h3.35v1.68h.05c.47-.87 1.6-1.79 3.3-1.79 3.53 0 4.18 2.28 4.18 5.24V21h-3.5v-6.1c0-1.46-.03-3.34-2.05-3.34-2.05 0-2.37 1.58-2.37 3.23V21H9.5z"/></svg>
+          linkedin.com/in/ruslan-hryshchenko
         </a>
       </div>
+    </section>
 
-      <a class="contact-btn" href="mailto:hryshchenkoruslan1@gmail.com">Contact Me →</a>
-    </div>
+    <footer>© 2026 Ruslan Hryshchenko · Geseke, NRW, Germany</footer>
+  </main>
+</div>
 
-  </div>
+<script>
+  // Highlight the active section in the sidebar nav as the user scrolls.
+  (function(){
+    var links = Array.prototype.slice.call(document.querySelectorAll('nav.sidenav a'));
+    var sections = links.map(function(a){ return document.querySelector(a.getAttribute('href')); }).filter(Boolean);
+    if (!('IntersectionObserver' in window) || !sections.length) return;
+    var map = {};
+    sections.forEach(function(sec, i){ map[sec.id] = links[i]; });
+    var observer = new IntersectionObserver(function(entries){
+      entries.forEach(function(entry){
+        var link = map[entry.target.id];
+        if (!link) return;
+        if (entry.isIntersecting){
+          links.forEach(function(l){ l.classList.remove('active'); });
+          link.classList.add('active');
+        }
+      });
+    }, { rootMargin: '-40% 0px -55% 0px', threshold: 0 });
+    sections.forEach(function(sec){ observer.observe(sec); });
+  })();
+</script>
 
 </body>
 </html>
