@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Ruslan Hryshchenko — Full-Stack Developer</title>
-<meta name="description" content="Ruslan Hryshchenko — Full-Stack Developer specializing in React, Next.js, Node.js and AI-powered products." />
+<title>Ruslan Hryshchenko — Full-Stack Developer &amp; AI Engineer</title>
+<meta name="description" content="Ruslan Hryshchenko — Full-Stack Developer specializing in React, Next.js, Node.js and agentic AI products built on LangGraph, MCP and RAG." />
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
@@ -257,6 +257,7 @@
 
   /* Projects */
   .projects{display:grid; grid-template-columns:1fr 1fr; gap:1px; background:var(--line); border:1px solid var(--line);}
+  .projects .project:nth-child(5){grid-column:1 / -1;}
   .project{background:var(--panel); padding:26px;}
   .project h3{font-size:16px; display:flex; align-items:center; gap:8px;}
   .project h3 a{text-decoration:none; display:inline-flex; align-items:center; gap:6px;}
@@ -320,7 +321,7 @@
       <div class="mark" aria-hidden="true">RH</div>
       <div class="id">
         <h1>Ruslan Hryshchenko</h1>
-        <p>Full-Stack Developer</p>
+        <p>Full-Stack Developer &amp; AI Engineer</p>
       </div>
     </div>
 
@@ -362,9 +363,9 @@
 
     <!-- HERO -->
     <section class="hero" id="top">
-      <div class="hero-kicker">Full-Stack Developer — JavaScript / React / Node.js</div>
+      <div class="hero-kicker">Full-Stack Developer — JavaScript / React / Node.js / Agentic AI</div>
       <h1>I build products that ship, from data model to deploy.</h1>
-      <p class="role">Two years of taking web apps end to end — React and Next.js front ends, Node.js and Express APIs, MongoDB and PostgreSQL data layers, and AI features on the Claude and Gemini APIs. Currently based in Geseke, Germany.</p>
+      <p class="role">Two years of taking web apps end to end — React and Next.js front ends, Node.js and Express APIs, MongoDB and PostgreSQL data layers — and, more recently, agentic AI features built on LangGraph, MCP and RAG with the Claude and Gemini APIs. Currently based in Geseke, Germany.</p>
       <div class="hero-cta">
         <a class="btn primary" href="mailto:hryshchenkoruslan1@gmail.com">Get in touch</a>
         <a class="btn" href="https://github.com/r671h" target="_blank" rel="noopener">View GitHub</a>
@@ -378,15 +379,15 @@
         </div>
         <div class="stat">
           <div class="num">46%</div>
-          <div class="label">Less manual data-review time after shipping an AI analyst agent</div>
+          <div class="label">Less manual data-review time after shipping a RAG-powered AI agent</div>
         </div>
         <div class="stat">
-          <div class="num">4.7★</div>
-          <div class="label">Freelance rating held across 30+ engagements</div>
+          <div class="num">218</div>
+          <div class="label">Automated tests behind an agentic PR-review tool, zero network calls in the suite</div>
         </div>
         <div class="stat">
-          <div class="num">40%</div>
-          <div class="label">Faster average page load times delivered for clients</div>
+          <div class="num">5.0★</div>
+          <div class="label">Freelance rating held across 30+ Fiverr engagements</div>
         </div>
       </div>
     </section>
@@ -399,10 +400,11 @@
       </div>
       <p class="about-body">
         I'm a full-stack developer who likes owning a feature end to end — from the data model through to a Docker Compose
-        and CI/CD deployment. Most of my recent work sits at the intersection of product engineering and applied AI: building
-        real-time dashboards, authentication systems, and chat agents on the Claude and Gemini APIs that save people real time
-        on repetitive work. Alongside development, I mentor a 20-person learner cohort part-time, and I'm currently completing
-        a Bachelor's in Computer Science while working German B2 into daily use.
+        and CI/CD deployment. My recent work sits at the intersection of product engineering and applied AI: a LangGraph-based
+        GitHub PR-review agent with custom MCP tool servers and schema-constrained Gemini outputs, RAG-powered finance
+        assistance, and multimodal receipt processing on Java and Spring Boot. I combine that with backend fundamentals —
+        authentication, testing, and deployment — rather than treating AI features as a bolt-on. I'm currently completing a
+        Bachelor's in Computer Science while working German B2 into daily use.
       </p>
     </section>
 
@@ -419,19 +421,23 @@
         </div>
         <div class="skill-group">
           <h3>Backend</h3>
-          <div class="tags"><span>Node.js</span><span>Express.js</span><span>REST APIs</span><span>Socket.io / WebSockets</span></div>
+          <div class="tags"><span>Node.js</span><span>Express.js</span><span>Java 21</span><span>Spring Boot</span><span>REST APIs</span><span>Socket.io / WebSockets</span></div>
         </div>
         <div class="skill-group">
-          <h3>Data</h3>
-          <div class="tags"><span>MongoDB</span><span>PostgreSQL</span><span>Prisma ORM</span><span>Supabase</span></div>
+          <h3>AI &amp; Agentic Systems</h3>
+          <div class="tags"><span>LangGraph</span><span>LangGraph.js</span><span>MCP</span><span>RAG</span><span>Vector Search</span><span>Spring AI</span><span>Claude API</span><span>Gemini API</span></div>
         </div>
         <div class="skill-group">
-          <h3>AI &amp; Auth</h3>
-          <div class="tags"><span>Claude API</span><span>Gemini API</span><span>JWT</span><span>bcrypt</span><span>RBAC</span></div>
+          <h3>Data &amp; Messaging</h3>
+          <div class="tags"><span>PostgreSQL</span><span>MongoDB</span><span>Kafka</span><span>Prisma ORM</span><span>Supabase</span></div>
+        </div>
+        <div class="skill-group">
+          <h3>Security &amp; Testing</h3>
+          <div class="tags"><span>OAuth2 / JWT</span><span>RBAC</span><span>bcrypt</span><span>Testcontainers</span><span>218 automated tests</span></div>
         </div>
         <div class="skill-group">
           <h3>Tooling &amp; DevOps</h3>
-          <div class="tags"><span>Git</span><span>Docker / Compose</span><span>CI/CD</span><span>Vercel</span><span>Zustand</span></div>
+          <div class="tags"><span>Git</span><span>Docker / Compose</span><span>GitHub Actions</span><span>CI/CD</span><span>Vercel</span><span>Zustand</span></div>
         </div>
         <div class="skill-group">
           <h3>Languages</h3>
@@ -445,23 +451,10 @@
       <div class="section-head">
         <div class="eyebrow">03 — Track record</div>
         <h2>Experience</h2>
-        <p>Several of these overlapped — I ran freelance, contract and mentoring work in parallel rather than one role at a time.</p>
+        <p>Several of these overlapped — I ran freelance and contract work in parallel rather than one role at a time.</p>
       </div>
 
       <div class="timeline">
-        <div class="job">
-          <div class="dates">Sep 2026 —<br/>Present</div>
-          <div>
-            <h3>Mentor</h3>
-            <div class="org">DT Akademie · Self-employed (Gewerbe)</div>
-            <div class="meta">Remote, Germany · Part-time, concurrent with freelance development</div>
-            <ul>
-              <li>Lead a 20-person learner cohort, organizing guest-speaker sessions and structuring lecture materials that lifted course completion rates by 30%.</li>
-              <li>Run the mentorship as a self-registered business, handling end-to-end scheduling and content delivery for 20+ learners per cohort.</li>
-            </ul>
-          </div>
-        </div>
-
         <div class="job">
           <div class="dates">Oct 2024 —<br/>Aug 2026</div>
           <div>
@@ -482,7 +475,7 @@
             <div class="org">QuantCode · Contract, part-time</div>
             <div class="meta">Remote, Germany · Concurrent with Fiverr freelance work</div>
             <ul>
-              <li>Grew a personal finance platform to 50+ active beta users by shipping JWT/RBAC auth, a real-time analytics dashboard, and an AI financial-analyst chat agent that cut manual data review time by 46%.</li>
+              <li>Grew a personal finance platform to 50+ active beta users by shipping JWT/RBAC auth, a real-time analytics dashboard, and a RAG-powered AI financial-analyst chat agent that cut manual data review time by 46%.</li>
               <li>Containerized the full stack with Docker Compose and built a CI/CD pipeline, cutting release time from hours to under 10 minutes.</li>
             </ul>
           </div>
@@ -513,7 +506,7 @@
           <h3><a href="https://github.com/r671h/FinTracker" target="_blank" rel="noopener">FinTrack — Personal Finance Tracker
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M7 17L17 7M7 7h10v10"/></svg>
           </a></h3>
-          <p>A multi-account finance tracker with CSV import and an AI finance-analyst chat feature that cut manual expense categorization time by 50%.</p>
+          <p>A multi-account finance tracker with CSV import and a RAG-based AI finance-analyst chat feature that cut manual expense categorization time by 50%.</p>
           <div class="tags"><span>Next.js</span><span>Express.js</span><span>MongoDB</span><span>Claude API</span></div>
         </div>
         <div class="project">
@@ -534,8 +527,15 @@
           <h3><a href="https://github.com/r671h/Code_Reviewer" target="_blank" rel="noopener">CodeReviewer — AI PR Review Agent
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M7 17L17 7M7 7h10v10"/></svg>
           </a></h3>
-          <p>An AI agent that reviews GitHub pull requests end to end: fetches the diff, builds AST-based static-analysis context per changed file, and analyzes each with a schema-constrained LLM call before posting the result as a PR comment. Built as a LangGraph state machine with typed MCP tool boundaries, covered by 77 tests, and runnable as a CLI or GitHub Action.</p>
-          <div class="tags"><span>TypeScript</span><span>LangGraph</span><span>MCP</span><span>Gemini API</span><span>GitHub API</span></div>
+          <p>An agentic code-review tool with a LangGraph state machine that retrieves GitHub PR diffs, gathers per-file context through custom MCP tool servers, and requests schema-constrained findings from Gemini — approving only once every changed file has been analyzed. Caught a real CORS misconfiguration and a dropped-filter bug on a live PR. Runs as a CLI or GitHub Action and posts/updates its own PR comments. 218 tests, zero network calls in the suite.</p>
+          <div class="tags"><span>TypeScript</span><span>LangGraph.js</span><span>MCP</span><span>Gemini API</span><span>GitHub API</span><span>Zod</span></div>
+        </div>
+        <div class="project">
+          <h3><a href="https://github.com/r671h/pantry" target="_blank" rel="noopener">Pantry — Multimodal Receipt-to-Inventory Assistant
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M7 17L17 7M7 7h10v10"/></svg>
+          </a></h3>
+          <p>Uses Gemini multimodal extraction to turn photographed receipts into shared household inventory, with product alias matching, expiry estimates, and nightly Telegram digests. Built on a transactional outbox, idempotent Kafka consumers, optimistic locking, and per-household data isolation.</p>
+          <div class="tags"><span>Java 21</span><span>Spring Boot</span><span>PostgreSQL</span><span>Kafka</span><span>Spring AI</span><span>Testcontainers</span><span>Docker</span></div>
         </div>
       </div>
     </section>
@@ -579,7 +579,7 @@
       <div class="section-head">
         <div class="eyebrow">06 — Contact</div>
         <h2>Let's work together</h2>
-        <p>Open to full-stack and frontend roles, and to contract work involving AI-powered product features.</p>
+        <p>Open to full-stack and AI/LLM application engineering roles, and to contract work involving agentic product features.</p>
       </div>
       <div class="contact-grid">
         <a class="contact-row" href="mailto:hryshchenkoruslan1@gmail.com">
