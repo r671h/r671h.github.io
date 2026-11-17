@@ -207,6 +207,48 @@
   .btn.primary{background:var(--accent); color:var(--accent-ink); border-color:var(--accent);}
   .btn:hover{transform:translateY(-1px); border-color:var(--accent);}
 
+  .cv-dropdown{position:relative; display:inline-flex;}
+  .cv-dropdown .btn{cursor:pointer; background:none;}
+  .cv-dropdown .chev{font-size:10px; transition:transform .15s ease;}
+  .cv-dropdown.open .chev{transform:rotate(180deg);}
+  .cv-menu{
+    position:absolute;
+    top:calc(100% + 8px);
+    left:0;
+    width:280px;
+    max-width:calc(100vw - 48px);
+    background:var(--bg);
+    border:1px solid var(--line-strong);
+    border-radius:8px;
+    box-shadow:0 12px 32px rgba(0,0,0,.14);
+    padding:6px;
+    display:none;
+    flex-direction:column;
+    gap:2px;
+    z-index:20;
+  }
+  .cv-dropdown.open .cv-menu{display:flex;}
+  .cv-menu .cv-item{
+    font-family:'IBM Plex Sans', sans-serif;
+    font-size:14px;
+    color:var(--ink);
+    text-decoration:none;
+    padding:10px 12px;
+    border-radius:6px;
+    display:flex;
+    flex-direction:column;
+    gap:2px;
+    background:none;
+    border:none;
+    text-align:left;
+    width:100%;
+    cursor:pointer;
+  }
+  .cv-menu .cv-item:hover{background:var(--surface, rgba(127,127,127,.1));}
+  .cv-menu .cv-item.loading{opacity:.6; cursor:wait;}
+  .cv-menu .cv-item .label{font-weight:500;}
+  .cv-menu .cv-item .sub{font-family:'IBM Plex Mono', monospace; font-size:11px; color:var(--muted);}
+
   .stat-row{
     margin-top:56px;
     display:grid;
@@ -369,6 +411,25 @@
       <p class="role">Two years of taking products end to end — React and Next.js front ends, Node.js/NestJS and Java/Spring Boot services, Kafka-backed data layers — plus agentic AI features built on LangGraph, MCP and RAG with the Claude and Gemini APIs. Two of my own products are live: a receipt-to-inventory SaaS and a mobile game on Google Play. Currently based in Geseke, Germany.</p>
       <div class="hero-cta">
         <a class="btn primary" href="mailto:hryshchenkoruslan1@gmail.com">Get in touch</a>
+        <div class="cv-dropdown" id="cvDropdown">
+          <button type="button" class="btn" id="cvDropdownToggle" aria-haspopup="true" aria-expanded="false">
+            Download CV <span class="chev">▾</span>
+          </button>
+          <div class="cv-menu" role="menu">
+            <button type="button" role="menuitem" class="cv-item" data-asset="/_blob/f5f4033fe8fcd24d7bba230d2a9b9f0e" data-filename="Ruslan_Hryshchenko_AI_Engineer_CV.pdf">
+              <span class="label">AI Engineer</span>
+              <span class="sub">LangGraph · MCP · RAG focus</span>
+            </button>
+            <button type="button" role="menuitem" class="cv-item" data-asset="/_blob/17827627378091fa424312c732ad51b5" data-filename="Ruslan_Hryshchenko_Full_Stack_Developer_CV.pdf">
+              <span class="label">Full-Stack Developer</span>
+              <span class="sub">React · Node.js · NestJS focus</span>
+            </button>
+            <button type="button" role="menuitem" class="cv-item" data-asset="/_blob/7212fec9ea6104e12e040bfcf8e00512" data-filename="Ruslan_Hryshchenko_Java_Backend_Developer_CV.pdf">
+              <span class="label">Java Backend Developer</span>
+              <span class="sub">Java · Spring Boot · Kafka focus</span>
+            </button>
+          </div>
+        </div>
         <a class="btn" href="https://github.com/r671h" target="_blank" rel="noopener">View GitHub</a>
         <a class="btn" href="#experience">See experience</a>
       </div>
@@ -634,6 +695,76 @@
       });
     }, { rootMargin: '-40% 0px -55% 0px', threshold: 0 });
     sections.forEach(function(sec){ observer.observe(sec); });
+  })();
+
+  // Download CV dropdown: toggle on click, close on outside click or Escape,
+  // and hand each PDF to the viewer through the downloads capability.
+  (function(){
+    var dropdown = document.getElementById('cvDropdown');
+    var toggle = document.getElementById('cvDropdownToggle');
+    if (!dropdown || !toggle) return;
+
+    var downloadsPromise = (window.claude && typeof window.claude.use === 'function')
+      ? window.claude.use('downloads')
+      : Promise.resolve(null);
+
+    function close(){
+      dropdown.classList.remove('open');
+      toggle.setAttribute('aria-expanded', 'false');
+    }
+    var menu = dropdown.querySelector('.cv-menu');
+    toggle.addEventListener('click', function(e){
+      e.stopPropagation();
+      var isOpen = dropdown.classList.toggle('open');
+      toggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+      if (isOpen && menu){
+        menu.style.left = '0';
+        menu.style.right = 'auto';
+        var rect = menu.getBoundingClientRect();
+        var overflow = rect.right - (window.innerWidth - 16);
+        if (overflow > 0){
+          menu.style.left = 'auto';
+          menu.style.right = '0';
+        }
+      }
+    });
+    document.addEventListener('click', function(e){
+      if (!dropdown.contains(e.target)) close();
+    });
+    document.addEventListener('keydown', function(e){
+      if (e.key === 'Escape') close();
+    });
+
+    dropdown.querySelectorAll('.cv-item').forEach(function(item){
+      item.addEventListener('click', function(){
+        if (item.classList.contains('loading')) return;
+        var assetUrl = item.getAttribute('data-asset');
+        var filename = item.getAttribute('data-filename');
+        item.classList.add('loading');
+
+        downloadsPromise.then(function(downloads){
+          if (!downloads) {
+            // No downloads capability in this view: fall back to opening
+            // the asset directly so the viewer can save it themselves.
+            window.open(assetUrl, '_blank', 'noopener');
+            return null;
+          }
+          return fetch(assetUrl)
+            .then(function(res){
+              if (!res.ok) throw new Error('fetch failed: ' + res.status);
+              return res.blob();
+            })
+            .then(function(blob){
+              return downloads.save({ filename: filename, data: blob });
+            });
+        }).catch(function(err){
+          console.error('CV download failed', err);
+        }).finally(function(){
+          item.classList.remove('loading');
+          close();
+        });
+      });
+    });
   })();
 </script>
 
